@@ -91,6 +91,24 @@
 
   });
 
+  //Ruta para eliminar devs
+  $app->delete('/devs/{id}', function (Request $request, Response $response) {
+    
+    $id = $request->getAttribute('id');
+    try{
+
+      $dev = Dev::findOrFail($id);
+      $dev->delete();
+      return $response->withStatus(200);
+
+    }catch (/* Illuminate\Database\Eloquent\ModelNotFoundException */ Exception $e){
+      return '{"mensaje":"Dev not found, excepcion: '.$e->getMessage().'"}';
+    }
+
+    //return "HOLA";
+  });
+
+
   //Costumers routes
 
   //require '../src/routes/customers.php';
