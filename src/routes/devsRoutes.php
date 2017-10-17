@@ -75,3 +75,33 @@
 
     //return "HOLA";
   });
+
+  //Ruta para modificar devs
+  $app->put('/devs/{id}', function (Request $request, Response $response) {
+    
+    $id = $request->getAttribute('id');
+
+
+    $data = $request->getParsedBody();
+
+    try{
+
+      $dev = Dev::findOrFail($id);
+
+      if (!isset($data['name'])) throw new Exception("Error Processing Request, name is null or empty", 1);
+      if (!isset($data['focus'])) throw new Exception("Error Processing Request, focus is null or empty", 1);
+      if (!isset($data['hireDate'])) throw new Exception("Error Processing Request, hireDate is null or empty", 1);
+
+      $dev->name = (!isset($data['name'])? $dev->name : $data['name']);
+      $dev->focus = (!isset($data['focus'])? $dev->focus : $data['focus']);
+      $dev->hireDate = (!isset($data['hireDate'])? $dev->hireDate : $data['hireDate']);
+
+      $dev->save();
+      //return $response->getBody()->write($dev->toJson());
+    }catch (Exception $e){
+      return "{\"error\":\"".$e->getMessage()."\"}";
+    }
+
+    return $response->withStatus(201)->getBody()->write('{"mensaje":"Dev modificado exitosamente"}');
+
+  });
