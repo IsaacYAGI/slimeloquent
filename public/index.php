@@ -74,6 +74,10 @@
     $dev = new Dev();
     try{
 
+      if (!isset($data['name'])) throw new Exception("Error Processing Request, name is null or empty", 1);
+      if (!isset($data['focus'])) throw new Exception("Error Processing Request, focus is null or empty", 1);
+      if (!isset($data['hireDate'])) throw new Exception("Error Processing Request, hireDate is null or empty", 1);
+
       $dev->name = $data['name'];
       $dev->focus = $data['focus'];
       $dev->hireDate = $data['hireDate'];
