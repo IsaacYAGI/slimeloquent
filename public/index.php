@@ -25,13 +25,17 @@
   );
 
   //$app = new \Slim\App;
+  /*
   $app->get('/hello/{name}', function (Request $request, Response $response) {
       $name = $request->getAttribute('name');
       $response->getBody()->write("Hello, $name");
 
       return $response;
   });
+  
+  */
 
+  //API para obtener todos los devs
   $app->get('/devs', function (Request $request, Response $response) {
       
     $devs = Dev::all();
@@ -46,6 +50,7 @@
     //return "HOLA";
   });
 
+  //API para obtener un solo dev por su id
   $app->get('/devs/{id}', function (Request $request, Response $response) {
     
     $id = $request->getAttribute('id');
