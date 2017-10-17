@@ -46,6 +46,20 @@
     //return "HOLA";
   });
 
+  $app->get('/devs/{id}', function (Request $request, Response $response) {
+    
+    $id = $request->getAttribute('id');
+    try{
+
+      $dev = Dev::findOrFail($id);
+      return $dev->toJson();
+
+    }catch (/* Illuminate\Database\Eloquent\ModelNotFoundException */ Exception $e){
+      return '{"mensaje":"Dev not found"}';
+    }
+
+    //return "HOLA";
+  });
 
   //Costumers routes
 
