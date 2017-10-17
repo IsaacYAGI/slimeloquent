@@ -66,6 +66,27 @@
     //return "HOLA";
   });
 
+  //Ruta para agregar devs
+  $app->post('/devs', function (Request $request, Response $response) {
+    
+    $data = $request->getParsedBody();
+
+    $dev = new Dev();
+    try{
+
+      $dev->name = $data['name'];
+      $dev->focus = $data['focus'];
+      $dev->hireDate = $data['hireDate'];
+
+      $dev->save();
+    }catch (Exception $e){
+      return "{\"error\":\"".$e->getMessage()."\"}";
+    }
+
+    return $response->withStatus(201)->getBody()->write('{"mensaje":"Dev agregado exitosamente"}');
+
+  });
+
   //Costumers routes
 
   //require '../src/routes/customers.php';
