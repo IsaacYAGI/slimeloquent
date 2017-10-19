@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  username VARCHAR(255)  NULL  ,
+  date_reg DATE  NULL    ,
+PRIMARY KEY(id));
+
+
+
+CREATE TABLE IF NOT EXISTS posts (
+  id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  users_id INTEGER UNSIGNED  NOT NULL  ,
+  title VARCHAR(255)  NULL  ,
+  content VARCHAR(255)  NULL    ,
+PRIMARY KEY(id)  ,
+INDEX posts_FKIndex1(users_id),
+  FOREIGN KEY(users_id)
+    REFERENCES users(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+
+
