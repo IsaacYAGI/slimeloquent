@@ -40,6 +40,7 @@
   //Se integran las rutas de otro archivo
   require '../src/routes/devsRoutes.php';
   require '../src/routes/usersRoutes.php';
+  require '../src/routes/postsRoutes.php';
 
 
   //Costumers routes
