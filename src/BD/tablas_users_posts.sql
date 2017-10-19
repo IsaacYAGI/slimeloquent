@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS users (
   id INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
   username VARCHAR(255)  NULL  ,
   date_reg DATE  NULL    ,
-PRIMARY KEY(id));
+PRIMARY KEY(id))
+ENGINE=InnoDB;
 
 
 
@@ -11,12 +12,13 @@ CREATE TABLE IF NOT EXISTS posts (
   users_id INTEGER UNSIGNED  NOT NULL  ,
   title VARCHAR(255)  NULL  ,
   content VARCHAR(255)  NULL    ,
-PRIMARY KEY(id)  ,
+PRIMARY KEY(id, users_id)  ,
 INDEX posts_FKIndex1(users_id),
   FOREIGN KEY(users_id)
     REFERENCES users(id)
       ON DELETE NO ACTION
-      ON UPDATE NO ACTION);
+      ON UPDATE NO ACTION)
+ENGINE=InnoDB;
 
 
 
