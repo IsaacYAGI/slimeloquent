@@ -5,7 +5,9 @@
   //require '../vendor/autoload.php';
   //require '../src/config/db.php';
   require '../vendor/autoload.php';  
-  require '../src/models/dev.php';  
+  require '../src/models/dev.php'; 
+  require '../src/models/user.php';  
+  require '../src/models/post.php'; 
   require '../src/handlers/exceptions.php';
 
   $config = include('../src/config.php');
@@ -37,6 +39,7 @@
 
   //Se integran las rutas de otro archivo
   require '../src/routes/devsRoutes.php';
+  require '../src/routes/usersRoutes.php';
 
 
   //Costumers routes
