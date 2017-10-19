@@ -18,4 +18,20 @@
     //return "HOLA";
   });
 
-  
+  $app->get('/userPosts/{id}', function (Request $request, Response $response) {
+    
+    $id = $request->getAttribute('id');
+    try{
+
+      $user = User::findOrFail($id);
+      return $user->posts->toJson();
+
+    }catch (/* Illuminate\Database\Eloquent\ModelNotFoundException */ Exception $e){
+      return '{"mensaje":"User not found"}';
+    }
+
+      //return Dev::all()->toJson();
+    //return "HOLA";
+  });
+
+
