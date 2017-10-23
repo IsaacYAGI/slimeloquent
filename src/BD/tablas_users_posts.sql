@@ -21,5 +21,13 @@ INDEX posts_FKIndex1(users_id),
 ENGINE=InnoDB;
 
 
+CREATE TABLE IF NOT EXISTS `devs` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `focus` text NOT NULL,
+  `hireDate` date NOT NULL,
+  `updated_at` date NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
